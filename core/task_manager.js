@@ -10,10 +10,10 @@
 // ==========================================================================
 
 
-var E = require('./e').E,
-    TaskManager,
-    ManagedTasks = require('../tasks/managed_tasks').ManagedTasks.Tasks,
-    File = require('../core/file').File;
+var E = require('./e').E;
+var TaskManager;
+var ManagedTasks = require('../tasks/managed_tasks').ManagedTasks.Tasks;
+var File = require('../core/file').File;
 
 
 /**
@@ -71,7 +71,7 @@ var that = this,
          _current.next = _nextTask;
        }
        _current = _nextTask;
-     }     
+     }
    }
    if(_firstTask){
        that.tasksChain.push(_firstTask);

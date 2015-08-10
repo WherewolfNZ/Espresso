@@ -28,19 +28,20 @@ Task_ContentType = exports.Task_ContentType = function() {
   /* Properties */
   this.name = 'content type';
   this.contentTypes = {
-    ".js"      :  "text/javascript; charset=utf-8",
     ".css"     :  "text/css; charset=utf-8",
-    ".manifest":  "text/cache-manifest",
-    ".html"    :  "text/html",
-    ".png"     :  "image/png",
-    ".jpg"     :  "image/jpeg",
-    ".gif"     :  "image/gif",
-    ".svg"     :  "image/svg+xml",
-    ".json"    :  "application/json",
-    ".ttf"     :  "application/x-font-ttf",
-    ".otf"     :  "font/opentype",
     ".eot"     :  "application/vnd.ms-fontobject",
+    ".gif"     :  "image/gif",
+    ".html"    :  "text/html",
+    ".jpg"     :  "image/jpeg",
+    ".js"      :  "text/javascript; charset=utf-8",
+    ".json"    :  "application/json",
     ".m4a"     :  "audio/mp4a-latm",
+    ".mp4"     :  "video/mp4",
+    ".manifest":  "text/cache-manifest",
+    ".otf"     :  "font/opentype",
+    ".png"     :  "image/png",
+    ".svg"     :  "image/svg+xml",
+    ".ttf"     :  "application/x-font-ttf",
     ".woff"    :  "application/x-font-woff"
   };
 };
@@ -56,7 +57,7 @@ Task_ContentType.prototype = new Task();
  */
 Task_ContentType.prototype.duty = function(framework,callback){
 var self = this;
-    
+
   framework.files.forEach(function(cF){
   cF.contentType = (self.contentTypes[cF.getFileExtension()]) ? self.contentTypes[cF.getFileExtension()] :  'text/plain';
 
@@ -73,6 +74,10 @@ var self = this;
        break;
      case (cF.isHTML()):
        cF.requestPath = cF.getBaseName()+cF.getFileExtension();
+       break;
+     case (cF.isVideo()):
+       console.log('task_contentType.js -> isVideo!');
+       cF.requestPath = 'theme/videos/' + cF.getBaseName() + cF.getFileExtension();
        break;
      default:
        cF.requestPath = cF.getBaseName()+cF.getFileExtension();

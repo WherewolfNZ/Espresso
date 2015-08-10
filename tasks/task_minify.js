@@ -36,6 +36,8 @@ Task_Minify.prototype.duty = function (framework, callback) {
         '-jar',
         that._e_.path.join(__dirname, '..', 'bin', 'compiler.jar'),
         '--compilation_level', 'SIMPLE_OPTIMIZATIONS',
+        // '--compilation_level', 'ADVANCED_OPTIMIZATIONS',
+        '--language_in','ECMASCRIPT5',
         '--warning_level', 'QUIET'
       ]);
 
@@ -50,6 +52,7 @@ Task_Minify.prototype.duty = function (framework, callback) {
     minify.addListener('exit', function (code) {
         if (code !== 0) {
           Utils.logErr(' - while executing Task Minify: error code is: ' + code);
+          Utils.logErr(framework);
         } else {
           framework.files[0].content = _data;
           callback(framework);

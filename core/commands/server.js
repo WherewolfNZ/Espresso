@@ -56,7 +56,6 @@ exports.run = function run(params) {
     else {
         var Server = require('../server').Server;
         var server = new Server(params);
-
         server.run();
     }
 };

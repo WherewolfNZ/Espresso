@@ -15,7 +15,7 @@ var normalize = require('path').normalize;
 
 /**
  * @class
- * 
+ *
  * File is the representation of single resource in a Framework.
  * This could be a JavaScript file, a image or a CSS file.
  * Each file is a JavaScript object representation of such a resource.
@@ -28,12 +28,12 @@ var normalize = require('path').normalize;
  * @extends M
  */
 var File = exports.File = function (properties) {
- 
+
    /* Properties */
   this.virtual               = false;
   this.containsMergedContent = false;
   this.isHtml                = false;
-    
+
   this.path                  = '';
   this.framework             = '';
   this.children              = '';
@@ -45,6 +45,7 @@ var File = exports.File = function (properties) {
 
   this.dependencies          = [];
   this.resourceExtensions    = ['.png', '.jpg', '.gif', '.svg', '.ico'];
+  this.videoExtensions       = ['.mp4'];
 
   this.extname;
   this.basename;
@@ -84,7 +85,7 @@ File.prototype.addProperties = function(properties){
  * index.html
  */
 File.prototype.isVirtual = function(){
-      return this.virtual
+      return this.virtual;
 };
 
 /**
@@ -144,7 +145,8 @@ File.prototype.isStylesheet = function() {
  * @return {boolean}, true if file is a web-font.
  */
 File.prototype.isWebfont = function() {
-  return this.getFileExtension() === '.eot' || this.getFileExtension() === '.svg' || this.getFileExtension() === '.ttf' || this.getFileExtension() === '.woff';
+  // return this.getFileExtension() === '.eot' || this.getFileExtension() === '.svg' || this.getFileExtension() === '.ttf' || this.getFileExtension() === '.woff';
+  return this.getFileExtension() === '.eot' || this.getFileExtension() === '.ttf' || this.getFileExtension() === '.woff';
 };
 
 /**
@@ -171,7 +173,7 @@ File.prototype.isHTML = function() {
  * @return {boolean}, true if file is JavaScript.
  */
 File.prototype.isJavaScript = function() {
-  return this.getFileExtension() === '.js'; 
+  return this.getFileExtension() === '.js';
 };
 
 
@@ -181,12 +183,12 @@ File.prototype.isJavaScript = function() {
  * @return {boolean}, true if file is JavaScript.
  */
 File.prototype.isManifest = function() {
-  return this.getFileExtension() === '.manifest'; 
+  return this.getFileExtension() === '.manifest';
 };
 
 /**
  * @description
- * Test if a File is a image. 
+ * Test if a File is a image.
  * Based on the possible resource extensions.
  *
  * @return {boolean}, true if file is a Image.
@@ -207,6 +209,25 @@ var that = this;
   return x;
 };
 
+/**
+ * @description
+ * Test if a File is a video.
+ * Based on the possible resource extensions.
+ *
+ * @return {boolean}, true if file is a Image.
+ * @example
+ *  .mp4
+ */
+File.prototype.isVideo = function() {
+var that = this;
+    var x  = false;
+    this.videoExtensions.forEach(function (resExt) {
+        if(resExt === that.getFileExtension()){
+            x = true;
+        }
+    });
+  return x;
+};
 
 /**
  * @description
@@ -216,7 +237,7 @@ var that = this;
  */
 File.prototype.equalBaseName = function (otherFile){
   if(otherFile instanceof File){
-    return (this.getBaseName() === otherFile.getBaseName());    
+    return (this.getBaseName() === otherFile.getBaseName());
   }
     return false;
 };
@@ -230,6 +251,6 @@ File.prototype.equalBaseName = function (otherFile){
  * @return {string} a readable presentations of this file object.
  */
 File.prototype.toString = function() {
-    return 'Basename: ' + this.name + '\n'
-          + 'Filepath: ' + this.path + '\n';
+    return 'Basename: ' + this.name + '\n' +
+          'Filepath: ' + this.path + '\n';
 };

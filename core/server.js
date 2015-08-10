@@ -45,6 +45,7 @@ var Server = exports.Server = function (options) {
   this.appName = '';
   this.targetQuery = [];
   this.loadJSONConfig();
+
 };
 
 Server.prototype.loadJSONConfig = function () {

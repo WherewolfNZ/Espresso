@@ -14,7 +14,7 @@ var  E = require('../core/e').E;
 
 /**
  * @class
- * 
+ *
  * The Task prototype. This is the prototype of every task used in Espresso.
  * This prototype is definition of the core feature of a task.
  *
@@ -33,7 +33,7 @@ var Task = exports.Task = function() {
 Task.prototype = new E();
 
 /**
- * @description 
+ * @description
  * The run function, defined here for any task.
  * Execute the duty function of this task first, then pass the framework object forward to the next task.
  * If no next task is defined, we reached the end of the task chain.
@@ -54,13 +54,13 @@ Task.prototype.run = function(framework, callback){
         // mark framework as built whe the task chain is finished
         if (!framework.app.globalState.builtFrameworks) {
           framework.app.globalState.builtFrameworks = {};
-        };
+        }
         framework.app.globalState.builtFrameworks[framework.name] = true;
 
         callback(fr);
       } else {
         that.next.run(fr, callback);
-      };
+      }
     });
   } else {
     // Suspend task chain, as there are unsatisfied conditions, i.e. other
@@ -69,7 +69,7 @@ Task.prototype.run = function(framework, callback){
     process.nextTick(function () {
       that.run(framework, callback);
     });
-  };
+  }
 };
 
 
@@ -78,13 +78,13 @@ Task.prototype.run = function(framework, callback){
  * This function should be overridden by any Task implementation.
  * The duty() function contains the implementation of the action, provided by this task.
  * @param framework  {object} the framework, this task is working with
- * 
+ *
  * @param callback {function} the function, that should be called after the all tasks finished there job.
  */
 Task.prototype.duty = function(framework,callback){
   this._e_.sys.puts("No duty() function implemented for: '" +this.name + "' !");
   this._e_.sys.puts("Override the duty() function in your task by writing:\n yourTask.prototype.duty = function(framework,callback){ ... }");
-  callback();  
+  callback();
 };
 
 /**

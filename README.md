@@ -15,24 +15,28 @@ To install espresso you need [Node.js](http://nodejs.org/) >= 0.4 and either git
 Install via git
 ---------------
 
-Check out the project with git, init the submodules and create an alias.
+Check out the project with git, init the submodules and create an alias. Step-by-step presuming you have a ~/Code
 
 1. Install node.js. see description [here](http://nodejs.org/#download)
-2. Checkout Espresso:
+2. cd into Code folder
+
+    `cd ~/Code/`
+
+3. Checkout Espresso:
 
     `git clone https://github.com/wherewolfNZ/Espresso.git`
 
-3. Initialize submodules:
+4. Initialize submodules:
 
     `git submodule update --init`
 
-4. Install NPM modules
+5. Install NPM modules
 
     `npm install`
 
-4. Create an alias:
+6. Create an alias:
 
-    `alias espresso='/path/to/Espresso/bin/espresso.js'`
+    `alias espresso='~/Code/Espresso/bin/espresso.js'`
 
 Usage
 =====

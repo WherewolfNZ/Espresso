@@ -15,7 +15,7 @@ To install espresso you need [Node.js](http://nodejs.org/) >= 0.4 and either git
 Install via git
 ---------------
 
-If you don't want to use NPM, you can check out the project with git, init the submodules and create an alias.
+Check out the project with git, init the submodules and create an alias.
 
 1. Install node.js. see description [here](http://nodejs.org/#download)
 2. Checkout Espresso:
@@ -25,6 +25,10 @@ If you don't want to use NPM, you can check out the project with git, init the s
 3. Initialize submodules:
 
     `git submodule update --init`
+
+4. Install NPM modules
+
+    `npm install`
 
 4. Create an alias:
 

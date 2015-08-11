@@ -12,15 +12,6 @@ Prerequesites
 
 To install espresso you need [Node.js](http://nodejs.org/) >= 0.4 and either git or npm.
 
-Install via NPM
-----------------
-
-You can install espresso with the help of [NPM](http://npmjs.org/):
-
-    npm install espresso -g
-
-The "-g" option is needed for npm >= 1.0.
-
 Install via git
 ---------------
 
@@ -29,7 +20,7 @@ If you don't want to use NPM, you can check out the project with git, init the s
 1. Install node.js. see description [here](http://nodejs.org/#download)
 2. Checkout Espresso:
 
-    `git clone https://github.com/mwaylabs/Espresso.git`
+    `git clone https://github.com/wherewolfNZ/Espresso.git`
 
 3. Initialize submodules:
 
@@ -59,11 +50,6 @@ Usage
     `espresso generate -c testcontroller -v testview -m testmodel`
 
 This command will generate a new model, a new view and a new controller.
-
-Installing node.js on Windows
-=============================
-
-Read the instructions [here](https://github.com/ry/node/wiki/Building-node.js-on-Cygwin-%28Windows%29)
 
 Licensing
 =========

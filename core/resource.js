@@ -8,8 +8,6 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-/* jslint white: true, onevar: false, undef: true, nomen: false, eqeqeq: false, plusplus: false, bitwise: true, regexp: true, newcap: false immed: false, strict: false */
-
 var E = require('./e').E;
 var Framework = require('./framework').Framework;
 var File = require('./file').File;
@@ -25,6 +23,7 @@ var File = require('./file').File;
  * @constructor
  */
 var Resource = exports.Resource = function (properties) {
+  'use strict';
 
   /* Properties */
   this.__resourceBase__    = '/base';
@@ -50,7 +49,7 @@ var Resource = exports.Resource = function (properties) {
 /*
  * Getting all basic Espresso functions from Framework
  */
-require('sys').inherits(Resource, Framework);
+require('util').inherits(Resource, Framework);
 
 
 /**
@@ -124,9 +123,9 @@ Resource.prototype.evaluateTargetConfig = function () {
         this.group  = _target.group;
       }else{
         this._BASE_GROUP_ = false;
-        this.app.reporter.warnings.push(this.style.cyan('no resource folder found for group: "')
-          + this.style.magenta(_target.group)
-          + this.style.cyan('" using "base" only'));
+        this.app.reporter.warnings.push(this.style.cyan('no resource folder found for group: "') +
+          this.style.magenta(_target.group) +
+          this.style.cyan('" using "base" only'));
       }
     }
     if (_target.dedicatedResources && _target.group) {
@@ -135,9 +134,9 @@ Resource.prototype.evaluateTargetConfig = function () {
         this.dedicatedResources = _target.dedicatedResources;
       }else{
         this._BASE_GROUP_DEVICE = false;
-        this.app.reporter.warnings.push(this.style.cyan('no resource folder found for "')
-          + this.style.magenta(_target.group + '/' + _target.dedicatedResources)
-          + this.style.cyan('" using "base" and "/'+_target.group+'" only'));
+        this.app.reporter.warnings.push(this.style.cyan('no resource folder found for "') +
+          this.style.magenta(_target.group + '/' + _target.dedicatedResources) +
+          this.style.cyan('" using "base" and "/'+_target.group+'" only'));
       }
     }
   } else {
@@ -180,7 +179,7 @@ Resource.prototype.browseFiles = function (path, should_run, allow_sub_folders, 
       if (that.checkIfFolderShouldBeExcluded(path)) {
         return true;
       }
-      return !(self.excludedFiles.indexOf(_fileBaseName[_fileBaseName.length - 1]) === -1);
+      return (self.excludedFiles.indexOf(_fileBaseName[_fileBaseName.length - 1]) !== -1);
     };
 
     /*

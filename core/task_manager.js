@@ -58,12 +58,12 @@ var that = this,
 
    for (_i = 0; _i < tasks.length; ++_i) {
      if(!ManagedTasks[tasks[_i]]){
-         that._e_.sys.puts("ERROR: Task '"+tasks[_i]+"' not found! ");
-         that._e_.sys.puts("Hint: make sure, the task is defined and has an entry in /tasks/managed_tasks.js");
-         that._e_.sys.puts("Hint: check spelling");
+         console.log("ERROR: Task '"+tasks[_i]+"' not found! ");
+         console.log("Hint: make sure, the task is defined and has an entry in /tasks/managed_tasks.js");
+         console.log("Hint: check spelling");
          process.exit(1); /* exit the process, reason: task not found!*/
      }else{
-       _nextTask = new ManagedTasks[tasks[_i]];
+       _nextTask = new ManagedTasks[tasks[_i]]();
 
        if (_firstTask === undefined) {
          _firstTask = _nextTask;
@@ -76,7 +76,7 @@ var that = this,
    if(_firstTask){
        that.tasksChain.push(_firstTask);
    }else{
-     that._e_.sys.puts("ERROR: No Task defined");
+     console.log("ERROR: No Task defined");
      process.exit(1); /* exit the process, reason: not task was defined*/
    }
 };

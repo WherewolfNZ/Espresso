@@ -80,7 +80,7 @@ Task_Dependency.prototype.duty = function(framework,cb) {
               if (!/\.js$/.test(_path)){
                 _path += '.js';
               }
-              _deps.push(_path)
+              _deps.push(_path);
             }
             if(_deps.length >= 1){
               /*Add the found dependencies to the file.*/
@@ -110,12 +110,12 @@ Task_Dependency.prototype.duty = function(framework,cb) {
 
               that.addChildeNode = function(childNode){
                 that.children.push(childNode);
-              }
+              };
 
               that.getChildeNodes = function(){
                 return that.children;
-              }
-            }
+              };
+            };
 
             /* find and add the root nodes first!*/
             fr.files.forEach(function (file){
@@ -145,11 +145,11 @@ Task_Dependency.prototype.duty = function(framework,cb) {
             node.addChildeNode(that.buildTree(new _TreeNode(file.getName(),file)));
           }
         }
-      })
+      });
 
   });
-return node
-           }
+return node;
+           };
 
          };
 
@@ -186,7 +186,7 @@ return node
               var _sortedFiles = []; // holds the sort result.
               function print(node,string){
                 string += '+';
-                var it = node.name+' \n'
+                var it = node.name+' \n';
                 if (node.children){
                   node.children.forEach(function (child){
                       it += print(child,string);
@@ -196,7 +196,7 @@ return node
               }
               /*
                fr.dependencyTrees.forEach(function (tree){
-               this._e_.sys.puts(print(tree,''));
+               console.log(print(tree,''));
              });
              */
             /*
@@ -262,7 +262,7 @@ return node
       /*Calling merge recursively.*/
             return that.merge(orderdFiles,queue);
           }
-        }
+        };
       };
 
       var _merger = new _Merger([]);

@@ -22,9 +22,9 @@ var  E = require('../core/e').E;
  *
  */
 var Task = exports.Task = function() {
-  this.framework; /* reference to the framework*/
+  // this.framework; /* reference to the framework*/
   this.name = 'your task with no name'; /* the name of the task*/
-  this.next;  /* the reference to the next task in the chain.*/
+  // this.next;  /* the reference to the next task in the chain.*/
 };
 
 /*
@@ -82,8 +82,8 @@ Task.prototype.run = function(framework, callback){
  * @param callback {function} the function, that should be called after the all tasks finished there job.
  */
 Task.prototype.duty = function(framework,callback){
-  this._e_.sys.puts("No duty() function implemented for: '" +this.name + "' !");
-  this._e_.sys.puts("Override the duty() function in your task by writing:\n yourTask.prototype.duty = function(framework,callback){ ... }");
+  console.log("No duty() function implemented for: '" +this.name + "' !");
+  console.log("Override the duty() function in your task by writing:\n yourTask.prototype.duty = function(framework,callback){ ... }");
   callback();
 };
 

@@ -1,0 +1,9 @@
+node-legacy-versions - Simple list of all node legacy versions
+
+  usage: node-legacy-versions [options]
+
+  options:
+    -h, --help                    show help and usage
+    -v, --version                 show version
+    -j, --json                    output as json
+    -p, --pretty                  pretty print json

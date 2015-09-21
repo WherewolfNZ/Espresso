@@ -1,0 +1,9 @@
+iojs-versions - Simple list of all iojs versions
+
+  usage: iojs-versions [options]
+
+  options:
+    -h, --help                    show help and usage
+    -v, --version                 show version
+    -j, --json                    output as json
+    -p, --pretty                  pretty print json

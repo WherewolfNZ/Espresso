@@ -5,7 +5,7 @@ USER root
 
 RUN apt-get update && \
 	# needed to build espresso \
-	apt-get install -y default-jdk && \
+	apt-get install -y default-jdk \
 
 USER wherewolf
 

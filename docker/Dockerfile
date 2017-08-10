@@ -1,7 +1,7 @@
 FROM wherewolfnz/dev
 MAINTAINER Stephen Hazleton <stephen@wherewolf.co.nz>
 
-USER ROOT
+USER root
 
 RUN apt-get update && \
 	# needed to build espresso \
@@ -13,6 +13,8 @@ USER wherewolf
 RUN cd /home/wherewolf && \
 	git clone git@github.com:WherewolfNZ/Espresso && \
 	sed -i '/cmdParser.dispatch(args)/iargs.shift();' Espresso/bin/espresso.js
+
+USER root
 
 CMD su - wherewolf -c \
 		"/home/wherewolf/code/helperscripts/start_container.sh && \

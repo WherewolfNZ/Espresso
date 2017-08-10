@@ -1,6 +1,8 @@
 FROM wherewolfnz/dev
 MAINTAINER Stephen Hazleton <stephen@wherewolf.co.nz>
 
+USER ROOT
+
 RUN apt-get update && \
 	# needed to build espresso \
 	apt-get install -y default-jdk && \

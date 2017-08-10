@@ -7,9 +7,6 @@ RUN apt-get update && \
 	# needed to build espresso \
 	apt-get install -y default-jdk
 
-USER wherewolf
-
-# Espresso
 # copy source code from build context
 RUN mkdir /home/wherewolf/Espresso
 COPY source /home/wherewolf/Espresso/
@@ -17,7 +14,7 @@ COPY source /home/wherewolf/Espresso/
 # fix args
 RUN sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js
 
-USER root
+RUN chown -R wherewolf:wherewolf /home/wherewolf/Espresso
 
 CMD su - wherewolf -c \
 		"/home/wherewolf/code/helperscripts/start_container.sh && \

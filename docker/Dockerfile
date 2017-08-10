@@ -10,9 +10,12 @@ RUN apt-get update && \
 USER wherewolf
 
 # Espresso
-RUN cd /home/wherewolf && \
-	git clone git@github.com:WherewolfNZ/Espresso && \
-	sed -i '/cmdParser.dispatch(args)/iargs.shift();' Espresso/bin/espresso.js
+# copy source code from build context
+RUN mkdir /home/wherewolf/Espresso
+COPY source /home/wherewolf/Espresso/
+
+# fix args
+RUN sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js
 
 USER root
 

@@ -16,6 +16,8 @@ RUN sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/b
 
 RUN chown -R wherewolf:wherewolf /home/wherewolf/Espresso
 
+USER root
+
 CMD su - wherewolf -c \
 		"/home/wherewolf/code/helperscripts/start_container.sh && \
 		trap : TERM INT; sleep infinity & wait"

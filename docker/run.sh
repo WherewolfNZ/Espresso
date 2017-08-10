@@ -1,9 +1,3 @@
-# Check enviro is set up correctly
-if [ -z "$WW_CODE_DIR" ]; then
-	echo 'WW_CODE_DIR is not set';
-	exit;
-fi
-
 docker run \
 	--link postgres:postgres \
 	--name dev \

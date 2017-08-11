@@ -5,4 +5,5 @@ docker run \
 	-v $WW_CODE_DIR:/home/wherewolf/code \
 	-p 8000:8000 \
 	-p 8001:8001 \
+	-p 2024:22 \
 	-t wherewolfnz/espresso

@@ -8,7 +8,7 @@ RUN echo "CONTAINER_TYPE=ESPRESSO" >> /etc/environment
 
 RUN apt-get update && \
 	# JDK is needed to build espresso \
-	apt-get install -y default-jdk
+	apt-get install -y default-jdk && \
 	# node is needed to run espresso and to install hooks \
 	apt-get install curl && \
 	curl -sL https://deb.nodesource.com/setup_7.x | bash - && \

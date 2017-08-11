@@ -3,6 +3,9 @@ MAINTAINER Stephen Hazleton <stephen@wherewolf.co.nz>
 
 USER root
 
+# tag containers as espresso
+RUN echo "CONTAINER_TYPE=ESPRESSO" >> /etc/environment
+
 RUN apt-get update && \
 	# needed to build espresso \
 	apt-get install -y default-jdk

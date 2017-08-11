@@ -1,6 +1,6 @@
 docker run `
 	--link postgres:postgres `
-	--name dev `
+	--name espresso `
 	-v ${HOME}:/host_user:ro `
 	-v ${HOME}/code/wherewolf:/home/wherewolf/code `
 	-p 8000:8000 `

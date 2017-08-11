@@ -7,8 +7,12 @@ USER root
 RUN echo "CONTAINER_TYPE=ESPRESSO" >> /etc/environment
 
 RUN apt-get update && \
-	# needed to build espresso \
+	# JDK is needed to build espresso \
 	apt-get install -y default-jdk
+	# node is needed to run espresso and to install hooks \
+	apt-get install curl && \
+	curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
+	apt-get install -y nodejs
 
 # copy source code from build context
 RUN mkdir /home/wherewolf/Espresso

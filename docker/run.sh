@@ -1,4 +1,4 @@
-docker run \
+docker run -d\
 	--link postgres:postgres \
 	--name espresso \
 	-v $HOME:/host_user:ro \

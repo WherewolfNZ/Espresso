@@ -14,17 +14,20 @@ RUN echo "CONTAINER_TYPE=ESPRESSO" >> /etc/environment && \
 # install deps \
 apt-get update && \
 	# JDK is needed to build espresso \
-	apt-get install -y default-jdk && \
+	apt-get install -y --no-install-recommends default-jdk && \
 	# node is needed to run espresso and to install hooks \
-	apt-get install curl && \
+	apt-get install --no-install-recommends curl && \
 	curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
-	apt-get install -y nodejs && \
+	apt-get install -y --no-install-recommends nodejs && \
 \
 # fix args \
 sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js && \
 \
 # take ownership \
-chown -R wherewolf:wherewolf /home/wherewolf/Espresso
+chown -R wherewolf:wherewolf /home/wherewolf/Espresso && \
+\
+# cleanup \
+rm -rf /var/lib/apt/lists/*
 
 # CMD inherited from DEV
 

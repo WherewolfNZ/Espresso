@@ -20,6 +20,8 @@ apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
 	apt-get install -y --no-install-recommends nodejs && \
 \
+# install pre-commit hooks
+npm install -g jshint jscs && \
 # fix args \
 sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js && \
 \

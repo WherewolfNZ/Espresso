@@ -16,9 +16,11 @@ apt-get update && \
 	# JDK is needed to build espresso \
 	apt-get install -y --no-install-recommends default-jdk && \
 	# node is needed to run espresso and to install hooks \
-	apt-get install --no-install-recommends curl && \
+	apt-get install -y --no-install-recommends curl && \
 	curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 	apt-get install -y --no-install-recommends nodejs && \
+	# JSHint \
+	npm install -g jshint && \
 \
 # fix args \
 sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js && \

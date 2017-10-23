@@ -22,9 +22,6 @@ apt-get update && \
 	# JSHint \
 	npm install -g jshint && \
 \
-# fix args \
-sed -i '/cmdParser.dispatch(args)/iargs.shift();' /home/wherewolf/Espresso/bin/espresso.js && \
-\
 # take ownership \
 chown -R wherewolf:wherewolf /home/wherewolf/Espresso && \
 \

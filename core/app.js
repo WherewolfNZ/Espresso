@@ -313,6 +313,7 @@ App.prototype.loadTheMProject = function () {
     'underscore',
     'd8',
     'themes',
+    'moment',
     'tmp_themes',
     'bootstrapping'
   ].filter(function (module){
@@ -453,7 +454,8 @@ App.prototype.buildIndexHTML = function (callback, _frameworkNamesForIndexHtml, 
     'underscore',
     'd8',
     'themes',
-    'tmp_themes'
+    'tmp_themes',
+    'moment'
   ].forEach(function (name) {
     if (name in that.coreFrameworks) {
       that.coreFrameworks[name].files.forEach(function (file) {
